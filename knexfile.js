@@ -1,14 +1,16 @@
-import { config } from "dotenv";
-config();
+const dotenv = require("dotenv");
+dotenv.config();
 
-export const development = {
-  client: "pg",
-  connection: process.env.DATABASE_URL,
-  migrations: {
-    directory: "./database_config/migrations",
+module.exports = {
+  development: {
+    client: "pg",
+    connection: process.env.DATABASE_URL,
+    migrations: {
+      directory: "./db/migrations",
+    },
+    seeds: {
+      directory: "./db/seeds/dev",
+    },
+    useNullAsDefault: true,
   },
-  seeds: {
-    directory: "./database_config/seeds/dev",
-  },
-  useNullAsDefault: true,
 };
